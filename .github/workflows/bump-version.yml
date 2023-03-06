@@ -16,12 +16,7 @@ jobs:
       contents: write
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-      - run: npm ci
+        uses: actions/checkout@v2
 
       - name: 'Automated Version Bump'
         uses: 'phips28/gh-action-bump-version@master'
