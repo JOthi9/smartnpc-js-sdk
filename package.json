@@ -1,6 +1,6 @@
 {
   "name": "@smartnpc/client",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "author": "SmartNPC <support@smartnpc.ai> (smartnpc.ai)",
   "license": "ISC",
   "publishConfig": {
