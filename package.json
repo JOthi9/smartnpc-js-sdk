@@ -1,6 +1,11 @@
 {
   "name": "@smartnpc/client",
   "version": "0.1.0",
+  "author": "SmartNPC <support@smartnpc.ai> (smartnpc.ai)",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "build/index.js",
   "files": [
     "build/**/*"
@@ -15,8 +20,6 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "author": "SmartNPC",
-  "license": "ISC",
   "dependencies": {
     "eventemitter3": "^5.0.0"
   },

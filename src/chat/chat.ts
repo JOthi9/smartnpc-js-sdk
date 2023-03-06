@@ -1,11 +1,11 @@
-import EventEmitter from 'eventemitter3';
+import * as EventEmitter from 'eventemitter3';
 
 import { SmartNPCConnection } from '../connection';
 import { SmartNPCEvent } from '../smartnpc-event.enum';
 import { SmartNPCChatOptions } from './chat-options.interface';
 import { SmartNPCMessageResponse } from './message-response.interface';
 
-export class SmartNPCChat extends EventEmitter {
+export class SmartNPCChat extends (EventEmitter as any) {
   private connection: SmartNPCConnection;
   private options: SmartNPCChatOptions;
 

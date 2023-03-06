@@ -4,7 +4,7 @@ import {
   SmartNPCTokenConnectionOptions,
 } from './connection-options.interface';
 
-const HOST = 'https://api.smartnpc.ai/v1';
+const DEFAULT_HOST = 'https://api.smartnpc.ai/v1';
 
 export class SmartNPCConnection {
   private options?: SmartNPCConnectionOptions;
@@ -17,6 +17,8 @@ export class SmartNPCConnection {
     if (!this.options) {
       throw new Error('Authentication Failed: Must pass options');
     }
+
+    if (!this.options.host) this.options.host = DEFAULT_HOST;
 
     await this.auth();
 
@@ -81,7 +83,7 @@ export class SmartNPCConnection {
       headers.Authorization = 'Bearer ' + this.token;
     }
 
-    return await fetch(`${HOST}/${url}`, {
+    return await fetch(`${this.options!.host}/${url}`, {
       headers,
       ...init,
     });
