@@ -1,14 +1,36 @@
-name: Publish package to npmjs
+name: Publish
 on:
   push:
+    branches:
+      - "main"
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - "*"
+  pull_request:
+    branches:
+      - "main"
 jobs:
   publish:
+    name: 'Publish'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v3
-      # Setup .npmrc file to publish to npm
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: 'Bump version'
+        uses: 'phips28/gh-action-bump-version@master'
+        with:
+          tag-prefix: 'v'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: 'Setup .npmrc file to publish to npm'
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
