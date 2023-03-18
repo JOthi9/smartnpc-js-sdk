@@ -60,7 +60,7 @@ export class SmartNPCConnection {
           });
 
           this.token = response.token;
-          this.project = jwt_decode<Token>(response.token).project; // TODO: extract from token
+          this.project = jwt_decode<Token>(response.token).project;
 
           initialized = true;
         } catch (e) {
