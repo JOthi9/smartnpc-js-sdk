@@ -1,7 +1,7 @@
 import { SmartNPCChat } from '../chat';
 import { SmartNPCConnection } from '../connection';
 import { SmartNPCPlayer } from '../player';
-import { SmartNPCCharacterResponse } from './character-response.interface';
+import { SmartNPCCharacterInfo } from './character-info.interface';
 
 export class SmartNPCCharacter {
   private connection: SmartNPCConnection;
@@ -12,7 +12,7 @@ export class SmartNPCCharacter {
     this.id = id;
   }
 
-  async getInfo(): Promise<SmartNPCCharacterResponse> {
+  async getInfo(): Promise<SmartNPCCharacterInfo> {
     try {
       return await this.connection.fetch(
         `project/${this.connection.getProject()}/character/${this.id}`,

@@ -1,2 +1,2 @@
 export * from './character';
-export * from './character-response.interface';
+export * from './character-info.interface';

@@ -1,8 +1,11 @@
+import jwt_decode from 'jwt-decode';
+
 import {
   SmartNPCConnectionOptions,
   SmartNPCKeyConnectionOptions,
   SmartNPCTokenConnectionOptions,
 } from './connection-options.interface';
+import { Token } from './token';
 
 const DEFAULT_HOST = 'https://api.smartnpc.ai/v1';
 
@@ -57,7 +60,7 @@ export class SmartNPCConnection {
           });
 
           this.token = response.token;
-          this.project = response.project;
+          this.project = jwt_decode<Token>(response.token).project; // TODO: extract from token
 
           initialized = true;
         } catch (e) {

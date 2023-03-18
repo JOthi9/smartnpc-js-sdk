@@ -1,9 +1,9 @@
 import * as EventEmitter from 'eventemitter3';
 
 import { SmartNPCConnection } from '../connection';
-import { SmartNPCEvent } from '../smartnpc-event.enum';
+import { SmartNPCEvent } from '../event.enum';
 import { SmartNPCChatOptions } from './chat-options.interface';
-import { SmartNPCMessageResponse } from './message-response.interface';
+import { SmartNPCMessage } from './message.interface';
 
 export class SmartNPCChat extends (EventEmitter as any) {
   private connection: SmartNPCConnection;
@@ -16,7 +16,7 @@ export class SmartNPCChat extends (EventEmitter as any) {
     this.options = options;
   }
 
-  async getMessageHistory(): Promise<SmartNPCMessageResponse[]> {
+  async getMessageHistory(): Promise<SmartNPCMessage[]> {
     const { character, player } = this.options;
 
     try {
