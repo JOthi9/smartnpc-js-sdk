@@ -3,6 +3,11 @@
   "version": "0.1.20",
   "author": "SmartNPC <support@smartnpc.ai> (smartnpc.ai)",
   "license": "ISC",
+  "homepage": "https://smartnpc.ai",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/smartnpc/smartnpc-js-sdk"
+  },
   "publishConfig": {
     "access": "public"
   },
